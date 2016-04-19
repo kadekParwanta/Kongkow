@@ -39,6 +39,13 @@
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity">
         </activity>
+
+        <provider
+            android:name=".util.DataProvider"
+            android:authorities="com.creativeideas.kongkow.provider"
+            android:exported="false" >
+        </provider>
+
     </application>
 
 </manifest>
