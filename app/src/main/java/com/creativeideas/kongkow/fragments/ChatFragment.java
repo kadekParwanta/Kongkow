@@ -200,6 +200,14 @@ public class ChatFragment extends ListFragment implements
             public void onScroll(AbsListView absListView, int i, int i1, int i2) {
             }
         });
+
+        getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mOnChatSelectedListener = null;
     }
 
     @Override

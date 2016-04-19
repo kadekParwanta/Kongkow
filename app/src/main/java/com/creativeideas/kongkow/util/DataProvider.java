@@ -14,6 +14,7 @@ import android.net.Uri;
  */
 public class DataProvider extends ContentProvider {
 
+    static final String PROVIDER_NAME = "com.creativeideas.kongkow.provider";
     public static final String COL_ID = "_id";
 
     public static final String TABLE_MESSAGES = "messages";
@@ -29,8 +30,8 @@ public class DataProvider extends ContentProvider {
 
     private DbHelper dbHelper;
 
-    public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://com.creativeideas.kongkow.provider/messages");
-    public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://com.creativeideas.kongkow.provider/profile");
+    public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://"+PROVIDER_NAME+"/messages");
+    public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://"+PROVIDER_NAME+"/profile");
 
     private static final int MESSAGES_ALLROWS = 1;
     private static final int MESSAGES_SINGLE_ROW = 2;
@@ -40,10 +41,10 @@ public class DataProvider extends ContentProvider {
     private static final UriMatcher uriMatcher;
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI("com.creativeideas.kongkow.provider", "messages", MESSAGES_ALLROWS);
-        uriMatcher.addURI("com.creativeideas.kongkow.provider", "messages/#", MESSAGES_SINGLE_ROW);
-        uriMatcher.addURI("com.creativeideas.kongkow.provider", "profile", PROFILE_ALLROWS);
-        uriMatcher.addURI("com.creativeideas.kongkow.provider", "profile/#", PROFILE_SINGLE_ROW);
+        uriMatcher.addURI(PROVIDER_NAME, "messages", MESSAGES_ALLROWS);
+        uriMatcher.addURI(PROVIDER_NAME, "messages/#", MESSAGES_SINGLE_ROW);
+        uriMatcher.addURI(PROVIDER_NAME, "profile", PROFILE_ALLROWS);
+        uriMatcher.addURI(PROVIDER_NAME, "profile/#", PROFILE_SINGLE_ROW);
     }
 
     @Override

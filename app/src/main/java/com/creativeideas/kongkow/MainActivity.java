@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onChatSelected(String id) {
         Log.d("Main", "onChatSelected " + id);
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("PROFILE_ID", String.valueOf(id));
+        startActivity(intent);
     }
 
     @Override
