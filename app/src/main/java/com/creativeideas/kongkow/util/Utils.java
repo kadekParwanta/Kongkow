@@ -21,7 +21,6 @@ import android.os.Build;
 import android.os.StrictMode;
 
 import com.creativeideas.kongkow.ContactDetailActivity;
-import com.creativeideas.kongkow.ContactsListActivity;
 
 /**
  * This class contains static utility methods.
@@ -59,7 +58,6 @@ public class Utils {
                 // For each activity class, set an instance limit of 1. Any more instances and
                 // there could be a memory leak.
                 vmPolicyBuilder
-                        .setClassInstanceLimit(ContactsListActivity.class, 1)
                         .setClassInstanceLimit(ContactDetailActivity.class, 1);
             }
 

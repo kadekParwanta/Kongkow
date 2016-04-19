@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,10 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.creativeideas.kongkow.fragments.ChatFragment;
 import com.creativeideas.kongkow.fragments.ContactsListFragment;
 
 public class MainActivity extends AppCompatActivity implements
-        ContactsListFragment.OnContactsInteractionListener {
+        ContactsListFragment.OnContactsInteractionListener, ChatFragment.OnChatInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                AddContactDialog dialog = new AddContactDialog();
+                dialog.show(getSupportFragmentManager(), "Add Contact");
             }
         });
 
@@ -116,6 +121,16 @@ public class MainActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onChatSelected(String id) {
+        Log.d("Main", "onChatSelected " + id);
+    }
+
+    @Override
+    public void onChatSelectionCleared() {
+
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -131,6 +146,8 @@ public class MainActivity extends AppCompatActivity implements
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
+                case 0:
+                    return ChatFragment.newInstance();
                 case 3:
                     return ContactsListFragment.newInstance();
                 default:

@@ -92,7 +92,7 @@ public class ContactsListFragment extends ListFragment implements
 
     // Bundle key for saving previously selected search result item
     private static final String STATE_PREVIOUSLY_SELECTED_KEY =
-            "com.example.android.contactslist.ui.SELECTED_ITEM";
+            "com.creativeideas.kongkow.fragments.SELECTED_ITEM";
 
     private ContactsAdapter mAdapter; // The main query adapter
     private ImageLoader mImageLoader; // Handles loading the contact image in a background thread
